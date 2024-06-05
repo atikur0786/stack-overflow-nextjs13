@@ -49,12 +49,12 @@ export default function RootLayout({
           }}
         >
           <ThemeProvider>
-            <SignedOut>
+            {/* <SignedOut>
               <SignInButton />
             </SignedOut>
             <SignedIn>
               <UserButton />
-            </SignedIn>
+            </SignedIn> */}
             {children}
           </ThemeProvider>
         </ClerkProvider>
