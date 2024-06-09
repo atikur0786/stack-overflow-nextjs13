@@ -6,57 +6,11 @@ import Link from "next/link";
 import HomeFilters from "@/components/home/HomeFilters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/card/QuestionCard";
+import { getQuestions } from "@/lib/action/question.action";
 
-const questions = [
-  {
-    _id: "1",
-    title: "How to get started with Next.js?",
-    tags: [
-      {
-        _id: "1",
-        name: "web development",
-      },
-      {
-        _id: "2",
-        name: "nextjs",
-      },
-    ],
-    author: {
-      _id: "1",
-      name: "Jhon Doe",
-      picture: "https://example.com/picture1.jpg",
-    },
-    upvotes: 10000000,
-    views: 500000,
-    answers: [{}], // Array of objects, you can replace with actual answers
-    createdAt: new Date("2021-09-01T12:00:00Z"),
-  },
-  {
-    _id: "2",
-    title: "How to center a div?",
-    tags: [
-      {
-        _id: "3",
-        name: "CSS",
-      },
-      {
-        _id: "2",
-        name: "nextjs",
-      },
-    ],
-    author: {
-      _id: "1",
-      name: "Jhon Doe",
-      picture: "https://example.com/picture1.jpg",
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [{}], // Array of objects, you can replace with actual answers
-    createdAt: new Date("2021-09-01T12:00:00Z"),
-  },
-];
-
-const Home = () => {
+const Home = async () => {
+  const result = await getQuestions({});
+  console.log(result.questions);
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -84,8 +38,8 @@ const Home = () => {
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((question) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
