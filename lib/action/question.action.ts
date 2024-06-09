@@ -3,7 +3,7 @@
 import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import Tag from "@/database/tag.model";
-import { CreateQuestionsParams, GetQuestionsParams } from "./shared.types";
+import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
 
@@ -29,7 +29,7 @@ export async function getQuestions(params: GetQuestionsParams) {
   }
 }
 
-export async function createQuestion(params: CreateQuestionsParams) {
+export async function createQuestion(params: CreateQuestionParams) {
   try {
     connectToDatabase();
     console.log("questions params: ", params);
